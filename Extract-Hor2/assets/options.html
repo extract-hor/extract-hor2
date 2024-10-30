@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Options</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <img src='../icons/horaire-128.png'/>            
+            <h1>Extract-Hor</h1>
+        </div>
+        
+        <div>
+            <h3>Attention !</h3>
+            <p>    
+                <img style="float: right;width: 200px" src='config-tosca.png'/> 
+                Assurez-vous de bien configurer l'affichage hebdomadaire de l'horaire dans le système 
+                TOSCA.net sans fragmentation quotidienne.  Consultez <a target="_blank" href="config-tosca.png">l'image des options</a> de configuration de l'horaire
+                enseignant pour avoir plus de détails.
+            </p>
+        
+        </div>
+        <p>Procédure pour obtenir les données de l'horaire en format iCal et télécharger le fichier localement :
+        <ol>
+            <li>Sélectionner l'onglet horaire de l'enseignant dans Tosca.net </li>
+            <li>Appuyer sur le bouton d'extension Extract-Hor</li>
+            <li>Sélectionner l'onglet option généré par l'extension (la zone de text contient les données calendrier)</li>
+            <li>Appuyer le bouton Téléchargement iCal sous la zone de texte pour enregisrer le fichier localement</li>            
+        </ol>
+        
+
+
+        <textarea id="text-val" cols="60" rows="10">Ce contenu sera remplacé par l'horaire</textarea><br/>
+        <input type="button" id="dwn-btn" value="Téléchargement iCal"/>
+        <script src="options.js"></script>
+        
+        <div>
+            <h4>Finalement !</h4>
+            <p>
+                Après le téléchargement, importer le fichier iCal dans l'agenda Outlook Web ou Google Calendar. 
+                Pour les autres je n'ai pas testé...Bonne chance !<br>
+                <a target"_blank" href="https://youtube.com/playlist?list=PL9i2Pxd-wvT7Az6bjbOblDzPFmVJPHZfO&si=BcY7sXCP4GLYuwI6">Voir les vidéos sur Youtube pour obtenir plus d'information</a>
+            </p>        
+        </div>        
+        
+    </body>
+</html>
