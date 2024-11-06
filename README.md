@@ -7,9 +7,11 @@ Extract-Hor est une extension pour le navigateur Chrome qui permet d'extraire le
 https://youtu.be/HKPflrNS5qM?si=1ukoeaopRW-NwGCV
 
 <h1>Confidentialité</h1>
-•	Seules les données dans l’affichage de l’onglet horaire enseignant sont utilisée d’une façon temporaire pour générer dynamiquement un fichier calendrier format iCal.
-•	Cette extension ne conserve aucune donnée sensible sur les utilisateurs
-•	Aucune donnée ne sera conservée après l’utilisation de l’extension 
-•	Le code source de l’extension est ouvert et disponible pour consultation ou modification
-•	Consultez la page du projet pour en savoir plus sur les conditions d’utilisation et la confidentialité
+<ul>
+<li>Seules les données dans l’affichage de l’onglet horaire enseignant sont utilisée d’une façon temporaire pour générer dynamiquement un fichier calendrier format iCal.</li>
+<li>Cette extension ne conserve aucune donnée sensible sur les utilisateurs</li>
+<li>Aucune donnée ne sera conservée après l’utilisation de l’extension </li>
+<li>Le code source de l’extension est ouvert et disponible pour consultation ou modification</li>
+<li>Consultez la page du projet pour en savoir plus sur les conditions d’utilisation et la confidentialité</li>
+</ul>
 
