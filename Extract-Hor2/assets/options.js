@@ -114,8 +114,8 @@ function generateIcsFile(events) {
     icsContent+='\nCALSCALE:GREGORIAN';
     events.forEach(event => {    
       icsContent += `\nBEGIN:VEVENT`;
-      icsContent += `\nDTSTART;TZID=America/Montreal:${formatDateForIcal(event.dateEvenement)}T${formatHeureForIcal(event.heuredebut)}Z`;
-      icsContent += `\nDTEND;TZID=America/Montreal:${formatDateForIcal(event.dateEvenement)}T${formatHeureForIcal(event.heurefin)}Z`;
+      icsContent += `\nDTSTART;TZID=America/Montreal:${formatDateForIcal(event.dateEvenement)}T${formatHeureForIcal(event.heuredebut)}`;
+      icsContent += `\nDTEND;TZID=America/Montreal:${formatDateForIcal(event.dateEvenement)}T${formatHeureForIcal(event.heurefin)}`;
       icsContent += `\nSUMMARY:${event.description}`;
       icsContent += `\nLOCATION:${event.endroit}`;
       icsContent += `\nEND:VEVENT`; 
@@ -236,8 +236,8 @@ function createICalEvent(eventData) {
   
     // Exemple simplifié en incluant le lieu si disponible :
     const iCalEvent = `BEGIN:VEVENT
-  DTSTART;VALUE=DATE-TIME:${startDate}T${startTime}00Z
-  DTEND;VALUE=DATE-TIME:${startDate}T${endTime}00Z
+  DTSTART;VALUE=DATE-TIME:${startDate}T${startTime}00
+  DTEND;VALUE=DATE-TIME:${startDate}T${endTime}00
   SUMMARY:${summary}`;
   
     if (location) {
@@ -357,7 +357,7 @@ function updateDT(dtstr,str,decalage){
       
       oDate.setHours(oDate.getHours() + decalage);     
       
-      var icalStrRemplacement = oDate.getFullYear().toString() + zeropadding(oDate.getMonth()) + zeropadding(oDate.getDate()) + 'T' + zeropadding(oDate.getHours()) + zeropadding(oDate.getMinutes()) + '00' + 'Z';      
+      var icalStrRemplacement = oDate.getFullYear().toString() + zeropadding(oDate.getMonth()) + zeropadding(oDate.getDate()) + 'T' + zeropadding(oDate.getHours()) + zeropadding(oDate.getMinutes()) + '00' + '';      
       
       str = str.replace(icalStr,icalStrRemplacement);
     }
