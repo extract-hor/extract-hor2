@@ -277,14 +277,14 @@ function recherche_onglet(patern){
         heurefin = hf+nf+sf;
 
         vevent += '\n\n\nBEGIN:VEVENT\n';
-        vevent += 'DTSTART:'+datedebut+'T'+heuredebut+'Z\n';
-        vevent += 'DTEND:'+datedebut+'T'+heurefin+'Z\n';            
-        vevent += 'DSTAMP:' +dtstamp()+'Z\n';
+        vevent += 'DTSTART:'+datedebut+'T'+heuredebut+'\n';
+        vevent += 'DTEND:'+datedebut+'T'+heurefin+'\n';            
+        vevent += 'DSTAMP:' +dtstamp()+'\n';
         vevent += 'UID:'+makeid(16)+'@localhost.com\n';            
         vevent += 'CLASS:PUBLIC\n';
-        vevent += 'CREATED:'+dtstamp()+'Z\n';
+        vevent += 'CREATED:'+dtstamp()+'\n';
         vevent += 'DESCRIPTION:'+description+'\n';
-        vevent += 'LAST-MODIFIED:'+dtstamp()+'Z\n';
+        vevent += 'LAST-MODIFIED:'+dtstamp()+'\n';
         vevent += 'LOCATION:'+local+'\n';            
         vevent += 'SEQUENCE:0\n';
         vevent += 'STATUS:CONFIRMED\n';
