@@ -13,30 +13,7 @@ var tabId = false;
 //Constante pour le time zone  +5h
 const TZ=5;
 
-/*
- * @function setToOptions
- * @description  Transmettre le message vers la fenêtre option
- * @param {type} message
- * @returns {undefined}
- */
-function sendToOptions(message){
 
-            var optionsUrl = chrome.extension.getURL('/options/options.html');
-            
-           
-
-            chrome.tabs.query({url: optionsUrl}, function(tabs) {
-                if (tabs.length) {
-                    chrome.tabs.update(tabs[0].id, {active: true});
-                    //Envoyer un message sur l'onglet pour générer le fichier ics
-                    chrome.tabs.sendMessage(tabs[0].id, {message: "updatetextzone",textzone:message}, function(response) {
-                      });                    
-                } else {
-                    chrome.tabs.create({url: optionsUrl});
-                }
-            
-            }); 
-        }
 
         /*
  * 
@@ -81,35 +58,6 @@ function checkUrl(element,patern){
         window.localStorage.setItem('tabId',window.tabId);
     }
 }
-
-
-
-/*
- * @function onError
- * @description  Affiche l'erreur sur le canal d'erreur
- * @param {type} error
- * @returns {undefined}
- */
-function onError(error) {
-  console.error(`Error: ${error}`);
-}
-
-
-
-
-/*
- * @function recherche_onglet
- * @description  fonction pour recherche l'onglet horaire enseignant
- * @param {type} patern
- * @returns {undefined}
- */
-function recherche_onglet(patern){
-    chrome.tabs.query({windowType:'normal'}, function(tabs) {
-     tabs.forEach(element=>checkUrl(element,patern)); //parcourir chaque onglet 
-    });
-}
-
-
 
 
 
@@ -458,9 +406,24 @@ return ical;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function() {
   // Fonction pour ajouter le bouton
-  const addButton = () => {
+  const addButtoniCal = () => {
       // Cherche l'élément avec la classe 'TitrePage'
       const titrePage = document.querySelector(".TitrePage");
       
@@ -510,6 +473,15 @@ return ical;
       }
   };
 
-  // Démarre le processus
-  addButton();
+
+
+
+
+
+  // Ajouter le bouton principale Extract-Hor sur la page horaire enseignant
+  addButtoniCal();
 })();
+
+
+
+
