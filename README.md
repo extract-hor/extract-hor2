@@ -1,4 +1,4 @@
-<h1>PRÉSENTATIN</h1>
+<h1>PRÉSENTATION</h1>
 Extract-Hor est une extension pour le navigateur Chrome permettant de récupérer l'horaire de l'enseignant pour l'exporter vers différents types de fichiers de données.
 
 <H1>DESCRIPTION </H1>
@@ -15,7 +15,7 @@ Extract-Hor simplifie la gestion et le transfert des horaires en offrant une sol
 Consultez les vidéos pour apprendre l'utilisation :
 https://www.youtube.com/playlist?list=PL9i2Pxd-wvT7Az6bjbOblDzPFmVJPHZfO
 
-<hr>
+
 
 <h1>POLITIQUE DE CONFIDENTIALITÉ</h1>
 <ul>
@@ -25,6 +25,6 @@ https://www.youtube.com/playlist?list=PL9i2Pxd-wvT7Az6bjbOblDzPFmVJPHZfO
  <li>Le code source de l’extension est open source, accessible pour consultation ou modification, garantissant une transparence totale.  </li>
  <li>Pour en savoir plus sur les conditions d’utilisation et les mesures de confidentialité, consultez la page officielle du projet.</li>
 </ul>
-<hr>
+
 
 
