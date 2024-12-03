@@ -5,8 +5,9 @@
  * 
  */
 
-// Récupérer et afficher les données de l'url
+// Récupérer et afficher les données via le message dans l'url
 const elements = getQueryParams();
+
 
 //Découper les éléments avec \\n
 const eventsString = elements;
@@ -40,9 +41,14 @@ do{
         endroit
     });
 }while(i<eventsArray.length);
+//Récupérer le tableau de données et convertir dans les deux formats ics et json
 var icsContent = generateIcsFile(groupedEvents);
-//Mettre la chaine avec les événements dans la zone de texte
+var jsonContent = JSON.stringify(groupedEvents);
+var csvContent = generateCSVFile(groupedEvents);
+//Mettre les chaines avec les événements dans les zones de texte
 document.getElementById('text-val').textContent = icsContent;
+document.getElementById('json-val').textContent = jsonContent;
+document.getElementById('csv-val').textContent = csvContent;
 
 
 
@@ -54,20 +60,6 @@ document.getElementById('text-val').textContent = icsContent;
 *  Générer l'affichage dans le formulaire
 *
 */
-/*
-async function generateAndDisplayIcs() {
-    // ... votre code existant pour générer le fichier ics
-  
-    const tampon = await generateIcsFile(groupedEvents); // Attendre la génération du fichier
-  
-    const textzone = document.getElementById('text-val');
-    textzone.textContent = tampon; // Utiliser textContent pour éviter les problèmes d'interprétation HTML
-  }
-  
-  generateAndDisplayIcs();
-*/
-
-
   /**
    * fonction pour convertir la date en dt pour ical
    * @param {aaaa-mm-dd} events 
@@ -100,6 +92,9 @@ async function generateAndDisplayIcs() {
     return `${formattedHours}${formattedMinutes}00`;
   }
 
+
+  
+
 /*
 *  Fonction pour créer le fichier ics
 *
@@ -124,8 +119,6 @@ function generateIcsFile(events) {
     icsContent += "\nEND:VCALENDAR";
     return icsContent;
   }
-
-
 
 
 /*
@@ -255,32 +248,64 @@ function createICalEvent(eventData) {
 
 
 
+
+/**
+ * Tableau de données
+ * @param {*} groupedEvents 
+ */
+function generateCSVFile(groupedEvents) {
+  // Définir les en-têtes du CSV
+  const headers = ['dateEvenement', 'heuredebut', 'heurefin', 'description', 'endroit'];
+  
+  // Ajouter les en-têtes au contenu CSV
+  let csvContent = headers.join(',') + '\n';
+  
+  // Ajouter chaque événement au contenu CSV
+  groupedEvents.forEach(event => {
+      const row = [
+          event.dateEvenement,
+          event.heuredebut,
+          event.heurefin,
+          event.description,
+          event.endroit
+      ].join(',');
+      csvContent += row + '\n';
+  });
+
+  return csvContent;
+}
+
+
+
+
+
+
+
+
+
+
 /*
  * TÉLÉCHARGER LES ÉVÉNÉMENTS SOUS FORME DE FICHIER ICS
  * 
  * 
  * 
  */
-function download(filename, text) {
+function downloadical(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
-
     element.style.display = 'none';
     document.body.appendChild(element);
-
     element.click();
-
     document.body.removeChild(element);
 }
 
-// Start file download.
-document.getElementById("dwn-btn").addEventListener("click", function(){
+// Traitement du bouton iCal
+document.getElementById("dwn-btn-ical").addEventListener("click", function(){
     // Generate download of hello.txt file with some content
     var text = document.getElementById("text-val").value;
-    var filename = "calendrier.ics";
-    
-    download(filename, text);
+    var filename = "calendrier.ics";    
+    downloadical(filename, text);
 }, false);
 
 
@@ -289,77 +314,54 @@ document.getElementById("dwn-btn").addEventListener("click", function(){
 
 
 
-
-
-
-
-
-/**
- * Ajouter des 0 pour les nombres inférieur a 10
- * @param {*} digit 
- * @returns 
+/*
+ * TÉLÉCHARGER LES ÉVÉNÉMENTS SOUS FORME DE FICHIER JSON
+ * 
+ * 
+ * 
  */
-
-function zeropadding(digit){
-    if(digit<10){
-        digit = '0' + digit;  
-        }  
-
-return digit;
+function downloadjson(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
+// Traitement du bouton Excel
+document.getElementById("dwn-btn-json").addEventListener("click", function(){
+  // Appeler la fonction pour générer le fichier 
+    // Generate download of hello.txt file with some content
+    var text = document.getElementById("json-val").value;
 
-/**
- * Tailler les éléments de dt ical
- * @param {*} icalStr 
- * @returns 
+    var filename = "calendrier.json";    
+    downloadjson(filename, text);
+}, false);
+
+
+
+/*
+ * TÉLÉCHARGER LES ÉVÉNÉMENTS SOUS FORME DE FICHIER CSV
+ * 
+ * 
+ * 
  */
-
-function calenDate(icalStr)  {
-    // icalStr = '20110914T184000Z'             
-    var strYear = icalStr.substr(0,4);
-    var strMonth = icalStr.substr(4,2);
-    var strDay = icalStr.substr(6,2);
-    var strHour = icalStr.substr(9,2);
-    var strMin = icalStr.substr(11,2);
-    var strSec = icalStr.substr(13,2);
-
-    var oDate =  new Date(strYear,strMonth, strDay, strHour, strMin, strSec)
-
-return oDate;
+function downloadcsv(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
+// Traitement du bouton Excel
+document.getElementById("dwn-btn-csv").addEventListener("click", function(){
+  // Appeler la fonction pour générer le fichier 
+    // Generate download of hello.txt file with some content
+    var text = document.getElementById("csv-val").value;
 
-
-/**
- * Formatter le dt
- * @param {*} dtstr 
- * @param {*} str 
- * @param {*} decalage 
- * @returns 
- */
-
-function updateDT(dtstr,str,decalage){
-    
-    const regexp = RegExp(dtstr,'g');
-    
-    let matches = str.matchAll(regexp);
-
-    for (const match of matches) {
-        
-
-      
-      var strPrefix = dtstr.length;
-
-      
-      
-      var icalStr = str.slice(match['index'] + strPrefix , match['index'] + (strPrefix + 16));
-     
-      var oDate = calenDate(icalStr);      
-      
-      oDate.setHours(oDate.getHours() + decalage);     
-      
-      var icalStrRemplacement = oDate.getFullYear().toString() + zeropadding(oDate.getMonth()) + zeropadding(oDate.getDate()) + 'T' + zeropadding(oDate.getHours()) + zeropadding(oDate.getMinutes()) + '00' + '';      
-      
-      str = str.replace(icalStr,icalStrRemplacement);
-    }
-return str;
-}
+    var filename = "calendrier.csv";    
+    downloadjson(filename, text);
+}, false);

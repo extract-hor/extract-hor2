@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <title>Options</title>
         <meta charset="UTF-8">
@@ -7,16 +6,16 @@
     </head>
     <body>
         <div>
-            <img src='../icons/horaire-128.png'/>            
+            <img alt="Extract-hor" src='../icons/horaire-128.png'/>            
             <h1>Extract-Hor</h1>
         </div>
         
         <div>
             <h3>Attention !</h3>
             <p>    
-                <img style="float: right;width: 200px" src='config-tosca.png'/> 
+                <a target="_blank" href="../images/config-tosca.png"><img alt="configuration des champs horaire enseignant" title="Cliquez pour voir les détails de la configuration des champs" style="float: right;width: 350px" src='../images/config-tosca.png'/></a> 
                 Assurez-vous de bien configurer l'affichage hebdomadaire de l'horaire dans le système 
-                TOSCA.net sans fragmentation quotidienne.  Consultez <a target="_blank" href="config-tosca.png">l'image des options</a> de configuration de l'horaire
+                TOSCA.net sans fragmentation quotidienne.  Consultez <a target="_blank" href="../images/config-tosca.png">l'image des options</a> de configuration de l'horaire
                 enseignant pour avoir plus de détails.
             </p>
         
@@ -30,11 +29,25 @@
         </ol>
         
 
+        <div>
+            <div>
+                <textarea aria-label="text-val" id="text-val" cols="60" rows="10">Ce contenu sera remplacé par l'horaire</textarea><br/>
+                <input type="button" id="dwn-btn-ical" value="Téléchargement iCal"/>            
+            </div>
 
-        <textarea id="text-val" cols="60" rows="10">Ce contenu sera remplacé par l'horaire</textarea><br/>
-        <input type="button" id="dwn-btn" value="Téléchargement iCal"/>
-        <script src="options.js"></script>
-        
+            <div>
+                <textarea aria-label="json-val" id="json-val" cols="60" rows="10">Ce contenu sera remplacé par l'horaire</textarea><br/>
+                <input type="button" id="dwn-btn-json" value="Téléchargement JSON"/>
+            </div>
+
+            <div>
+                <textarea aria-label="csv-val" id="csv-val" cols="60" rows="10">Ce contenu sera remplacé par l'horaire</textarea><br/>
+                <input type="button" id="dwn-btn-csv" value="Téléchargement CSV"/>
+            </div>            
+        </div>
+
+
+
         <div>
             <h4>Finalement !</h4>
             <p>
@@ -43,6 +56,8 @@
                 <a target"_blank" href="https://youtube.com/playlist?list=PL9i2Pxd-wvT7Az6bjbOblDzPFmVJPHZfO&si=BcY7sXCP4GLYuwI6">Voir les vidéos sur Youtube pour obtenir plus d'information</a>
             </p>        
         </div>        
-        
+
+
+        <script src="options.js"></script>        
     </body>
 </html>
